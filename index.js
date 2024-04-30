@@ -3,14 +3,14 @@ const { Pool } = pkg;
 
 const config = {
   user: "postgres",
-  host: "157.92.151.10",
-  password: "caseros@1853",
-  database: "migracion",
+  host: "localhost",
+  password: "password",
+  database: "name_db",
 };
 
 const pool = new Pool(config);
 
-const getUser = async () => {
+export const getUser = async () => {
   try {
     const res = await pool.query("SELECT * FROM list_mails");
     console.log(res.rows);
@@ -20,7 +20,7 @@ const getUser = async () => {
   }
 };
 
-const insertUser = async () => {
+export const insertUser = async () => {
   try {
     const sql = "INSERT INTO list_mails(email) VALUES ($1)";
     const value = ["nlazarsky@ffyb.uba.ar"];
@@ -33,7 +33,7 @@ const insertUser = async () => {
   }
 };
 
-const deleteUser = async () => {
+export const deleteUser = async () => {
   try {
     const sql = "DELETE FROM list_mails WHERE email = $1";
     const value = ["nlazarsky@ffyb.uba.ar"];
@@ -46,7 +46,7 @@ const deleteUser = async () => {
   }
 };
 
-const editUser = async () => {
+export const editUser = async () => {
   try {
     const sql =
       "UPDATE list_mails SET email = $1, fecha_creacion = now() WHERE email = $2";
@@ -59,5 +59,3 @@ const editUser = async () => {
     console.log(e);
   }
 };
-
-getUser();

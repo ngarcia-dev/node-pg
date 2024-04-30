@@ -11,6 +11,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "pg": "8.11"
+    "pg": "^8.11.5"
   }
 }
